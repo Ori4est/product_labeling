@@ -101,15 +101,15 @@ def layer_blend(prod_img,
         cv2.drawContours(maskImg, [best_contour], -1, (255, 255, 255), -1)
         
 
-    cv2.imshow(prod_name+" [matchshape mask]", maskImg)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-    #max_contour = max(contours, key=lambda item: cv2.contourArea(item))
-    #cv2.drawContours(prod_img, [max_contour], -1, (128, 0, 0), cv2.FILLED)
-    #cv2.imshow(prod_name+" [max countour]", fill_img)
+    #cv2.imshow(prod_name+" [matchshape mask]", maskImg)
     #cv2.waitKey(0)
     #cv2.destroyAllWindows()
+
+    # max_contour = max(contours, key=lambda item: cv2.contourArea(item))
+    # cv2.drawContours(prod_img, [max_contour], -1, (128, 0, 0), cv2.FILLED)
+    # cv2.imshow(prod_name+" [max countour]", fill_img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     if cv2.contourArea(best_contour) < 1e4:
         print("NO CONTOURS DETECTED!")
@@ -263,8 +263,8 @@ def layer_blend(prod_img,
                                        )
         # add layers and write out to psd file
         file_dest.add_layer(label_layer)
-        file_dest.add_layer(prod_hed_layer)
-        file_dest.add_layer(contour_layer)
+        #file_dest.add_layer(prod_hed_layer)
+        #file_dest.add_layer(contour_layer)
         file_dest.add_layer(prod_layer)
         file_dest.write(save_path + prod_name + '.psd')
 
